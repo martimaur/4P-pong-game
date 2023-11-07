@@ -26,4 +26,4 @@ To run the game locally, simply clone the repository and add it as a Unity proje
 
 Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/4-player-pong-game.git
+   git clone https://github.com/martimaur/4P-pong-game.git
