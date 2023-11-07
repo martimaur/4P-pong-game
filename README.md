@@ -18,7 +18,7 @@ Welcome to the 4-Player Pong Game, an exciting multiplayer twist on the classic 
 
 Check out the [demo version](https://martimaur.itch.io/4-player-pong-game) of the game right in your browser. Play with your friends locally or with Parsec and experience the excitement of 4-Player Pong!
 
-![Game Screenshot](game-screenshot.png)
+![Game Screenshot](https://media.discordapp.net/attachments/1160254113305600033/1171414357394083890/mainscreen2.png?ex=655c97a2&is=654a22a2&hm=a5725fb118987401956ea4ed72aa26e19a3f58722e5b39bb552c77a229f605aa&=)
 
 ## Installation
 
