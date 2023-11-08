@@ -6,9 +6,9 @@ using UnityEngine;
 public class PaddleSpeedChange : PowerupEffect
 {
     // Start is called before the first frame update
-    public float changeValue;
+    public float percentageChange;
     public override void Apply(GameObject target)
     {
-        target.GetComponent<Mover>().MoveSpeed += changeValue;
+        target.GetComponent<Mover>().MoveSpeed *= percentageChange;
     }
 }

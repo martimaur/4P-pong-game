@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be88e6376a7d0a44191767543345481b, type: 3}
   m_Name: PaddleSizeDebuff
   m_EditorClassIdentifier: 
-  changeValue: -0.7
+  percentageChange: 0.5

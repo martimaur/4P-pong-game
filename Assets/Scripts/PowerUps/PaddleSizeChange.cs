@@ -6,11 +6,11 @@ using UnityEngine;
 public class PaddleSizeChange : PowerupEffect
 {
     // Start is called before the first frame update
-    public float changeValue;
+    public float percentageChange;
     public override void Apply(GameObject target)
     {
         var scale = target.transform.localScale;
-        scale.y += changeValue; //scales paddle
+        scale.y*=percentageChange; //scales paddle
         target.transform.localScale = scale;
     }
 }

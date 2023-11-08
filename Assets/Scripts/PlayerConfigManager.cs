@@ -9,15 +9,16 @@ public class PlayerConfigManager : MonoBehaviour
 {
     private List<PlayerConfiguration> playerConfigs;
     public int connectedPlayers;
-
+    public GameObject controlsIcons;
     public int maxPlayers = 4;
 
     public static PlayerConfigManager instance {  get; private set; }
 
     private void Awake()
     {
-        GameOverManager.pcmRestart += DestroyConfigManager;
 
+        GameOverManager.pcmRestart += DestroyConfigManager;
+        controlsIcons = GameObject.Find("ControlsIcons");
         if (instance != null)
         {
             Debug.Log("ERROR: Trying to create a second instance of singleton.");
@@ -52,6 +53,7 @@ public class PlayerConfigManager : MonoBehaviour
     public void HandlePlayerJoin(PlayerInput player)
     {
         Debug.Log("Player " + (player.playerIndex+1).ToString() + " joined!");
+        controlsIcons.SetActive(false); //remove controls icons instruction
         if (!playerConfigs.Any(p => p.playerIndex == player.playerIndex))
         { 
             player.transform.SetParent(transform);
