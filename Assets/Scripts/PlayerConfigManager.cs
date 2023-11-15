@@ -53,7 +53,7 @@ public class PlayerConfigManager : MonoBehaviour
     public void HandlePlayerJoin(PlayerInput player)
     {
         Debug.Log("Player " + (player.playerIndex+1).ToString() + " joined!");
-        controlsIcons.SetActive(false); //remove controls icons instruction
+        controlsIcons.SetActive(false); //remove controls icons instructions
         if (!playerConfigs.Any(p => p.playerIndex == player.playerIndex))
         { 
             player.transform.SetParent(transform);

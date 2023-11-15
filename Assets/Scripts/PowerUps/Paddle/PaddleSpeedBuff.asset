@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a0b57d779d06464fbb19bfa66934192, type: 3}
   m_Name: PaddleSpeedBuff
   m_EditorClassIdentifier: 
-  percentageChange: 1.5
+  xChange: 1
+  minSpeed: 0.5
+  maxSpeed: 3

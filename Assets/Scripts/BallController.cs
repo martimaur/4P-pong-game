@@ -6,8 +6,8 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
     private Rigidbody rb;
-    public float initialSpeed = 10f;
-    public float minSpeed = 5f;
+    public float initialSpeed = 7f;
+    public float minSpeed = 7f;
     public float maxSpeed = 15f;
     private GameManager gm;
     public GameObject lastPlayerTouch;
@@ -47,9 +47,9 @@ public class BallController : MonoBehaviour
             }
         }
         var spawnPoint = randomPosList[Random.Range(0, randomPosList.Count)];
-        var newSpawnPoint = AlterVectorRandom(spawnPoint);
+        //spawnPoint = AlterVectorRandom(spawnPoint);
 
-        rb.velocity = new Vector2(newSpawnPoint.x, newSpawnPoint.y).normalized * initialSpeed;  
+        rb.velocity = new Vector2(spawnPoint.x, spawnPoint.y).normalized * initialSpeed;  
     }
 
     private Vector3 AlterVectorRandom(Vector3 spawnPoint)
@@ -59,11 +59,11 @@ public class BallController : MonoBehaviour
         var y = spawnPoint.y;
         if (y == 0)
         {
-            newSpawnPoint = new Vector3(x, Random.Range(-(x-2), x-2), 0);
+            newSpawnPoint = new Vector3(x, Random.Range(-(x-4), x-4), 0);
         }
         else if (x == 0)
         {
-            newSpawnPoint = new Vector3(Random.Range(-(y - 2), y - 2), y, 0);
+            newSpawnPoint = new Vector3(Random.Range(-(y - 4), y - 4), y, 0);
         }
         return newSpawnPoint;
     }

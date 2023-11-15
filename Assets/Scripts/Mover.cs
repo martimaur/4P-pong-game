@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    public float MoveSpeed = 2000f;
+    public float inicialSpeed = 2000f;
+    public float MoveSpeed;
 
     private CharacterController controller;
     private Rigidbody rb;       
@@ -13,6 +14,7 @@ public class Mover : MonoBehaviour
 
     private void Awake()
     {
+        MoveSpeed = inicialSpeed; 
         rb = GetComponent<Rigidbody>();
     }
 

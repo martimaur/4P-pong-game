@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be88e6376a7d0a44191767543345481b, type: 3}
   m_Name: PaddleSizeBuff
   m_EditorClassIdentifier: 
-  percentageChange: 1.5
+  maxScale: 4
+  minScale: 0.3
+  xChange: 1

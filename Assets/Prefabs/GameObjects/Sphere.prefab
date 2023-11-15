@@ -48,11 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a4daf5db23fa143bcd79a03fa0aa6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 10
-  minSpeed: 10
+  initialSpeed: 9
+  minSpeed: 9
   maxSpeed: 15
-  speedMultiplier: 5
-  MAXBOUNCEANGLE: 75
+  lastPlayerTouch: {fileID: 0}
+  powerUpEffect: 
 --- !u!54 &2173075509811010012
 Rigidbody:
   m_ObjectHideFlags: 0
