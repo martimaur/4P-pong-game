@@ -16,7 +16,7 @@ public class InitializeLevel : MonoBehaviour
 
     private void Start()
     {
-        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();    
 
         if (PlayerConfigManager.instance==null) { return; }
         var playerConfigs = PlayerConfigManager.instance.GetPlayerConfigs().ToArray();
