@@ -70,6 +70,7 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
         if (collision.transform.tag == "Border")
         {
             //check if powerup enabled

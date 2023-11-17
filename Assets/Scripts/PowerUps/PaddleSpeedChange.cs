@@ -36,7 +36,7 @@ public class PaddleSpeedChange : PowerupEffect
             var sigmoid = 1 / (1 + Math.Exp(-(currentProgression + a)));
 
             float newSpeed = minSpeed + (maxSpeed - minSpeed) * (float) sigmoid;
-
+                
             // Update the scale of the paddle with the correct sign
             mover.MoveSpeed = newSpeed * inicialSpeed;
         }

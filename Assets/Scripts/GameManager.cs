@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject ballPrefab;
-    public int maxScore;
 
     private float ballSpawnDelay = 1f;
 
