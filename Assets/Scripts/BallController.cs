@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using EZCameraShake;
 public class BallController : MonoBehaviour
 {
     private Rigidbody rb;
@@ -70,6 +70,10 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.tag == "Barrier")
+        {
+            CameraShaker.Instance.ShakeOnce(0.8f, 1, 0.1f, 0.6f);
+        }
 
         if (collision.transform.tag == "Border")
         {
@@ -94,6 +98,10 @@ public class BallController : MonoBehaviour
         
         if (collision.transform.tag == "Player")
         {
+            //fx
+            var speed = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+            CameraShaker.Instance.ShakeOnce(0.8f, speed, 0.1f, 0.6f);
+
             //check if powerup enabled
             if (powerUpEffect == "SpikeBall")
             {

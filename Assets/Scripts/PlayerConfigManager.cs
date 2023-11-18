@@ -36,10 +36,16 @@ public class PlayerConfigManager : MonoBehaviour
         return playerConfigs;
     }
 
-    public void SetPlayerMaterial(int playerInd, Material mat)
+    public void SetPlayerMaterial(int playerInd, Material player_mat)
     {
-        playerConfigs[playerInd].playerMaterial = mat;
+        playerConfigs[playerInd].playerMaterial = player_mat;
     }
+
+    public void SetUiMaterial(int playerInd, Material ui_mat)
+    {
+        playerConfigs[playerInd].uiMaterial = ui_mat;
+    }
+
     public void ReadyPlayer(int playerInd)
     {
         playerConfigs[playerInd].isReady = true;
@@ -74,6 +80,19 @@ public class PlayerConfigManager : MonoBehaviour
         return null;
     }
 
+    public Material GetUiMaterial(int playerId)
+    {
+        foreach (var player in playerConfigs)
+        {
+            if (player.playerIndex == playerId)
+            {
+                return player.uiMaterial;
+            }
+        }
+        Debug.Log("GET_UI_MATERIAL ERROR");
+        return null;
+    }
+
     private void DestroyConfigManager()
     {
         if (this == null) { return; }
@@ -94,4 +113,5 @@ public class PlayerConfiguration
     public int playerIndex { get; set; }
     public bool isReady { get; set; }
     public Material playerMaterial { get; set; }
+    public Material uiMaterial { get; set; }
 }

@@ -9,6 +9,7 @@ public class PowerUp : MonoBehaviour
     public bool applyBall;
     public PowerupEffect powerupEffect;
     private PowerUpManager powerupManager;
+    public GameObject animationEffect;
 
     private void Awake()
     {
@@ -19,6 +20,9 @@ public class PowerUp : MonoBehaviour
         //check if ball hit powerup;
         if (other.transform.tag == "Ball")
         {
+            var obj = Instantiate(animationEffect, this.transform.position, animationEffect.transform.rotation); //spawn fx
+            Debug.Log("Instantiated new effect: "+obj);
+
             if (applyBall) 
             {
                 powerupEffect.Apply(other.gameObject);

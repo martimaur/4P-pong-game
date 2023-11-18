@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -45,16 +45,21 @@ public class PlayerSetupMenuController : MonoBehaviour
             inputEnabled = true;
         }
     }
-    public void SetColor(Material color )
+    public void SetPlayerMaterial(Material playerMaterial )
     {
         if(!inputEnabled) { return;  }
-        PlayerConfigManager.instance.SetPlayerMaterial(PlayerIndex, color);
+        PlayerConfigManager.instance.SetPlayerMaterial(PlayerIndex, playerMaterial);
         readyPanel.SetActive(true);
         readyButton.Select();
         menuPanel.SetActive(false);
-        Debug.Log("Set color of player "+(PlayerIndex+1).ToString()+" to "+color.ToString());
-    }   
-    
+    }
+
+    public void SetUiMaterial(Material uiMaterial)
+    {
+        if (!inputEnabled) { return; }
+        PlayerConfigManager.instance.SetUiMaterial(PlayerIndex, uiMaterial);
+    }
+
     public void ReadyPlayer()
     {
         if (!inputEnabled) { return; }

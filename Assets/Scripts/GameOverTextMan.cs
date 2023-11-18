@@ -18,7 +18,7 @@ public class GameOverTextMan : MonoBehaviour
         int winnerId = GameManager.roundWinnerId;
         pcm = GameObject.Find("PlayerConfigManager").GetComponent<PlayerConfigManager>();
 
-        Material materialWinner = pcm.GetPlayerMaterial(winnerId);
+        Material materialWinner = pcm.GetUiMaterial(winnerId);
 
         playerWonText.text = "PLAYER " + (winnerId + 1).ToString() + " WON! ";
         playerWonText.color = materialWinner.color;

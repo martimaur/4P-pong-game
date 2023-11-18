@@ -122,3 +122,4 @@ MonoBehaviour:
   applyPaddle: 1
   applyBall: 0
   powerupEffect: {fileID: 11400000, guid: 8f3a2f2b4b701ce4b856cc60553a40e7, type: 2}
+  animationEffect: {fileID: 8680934361064054421, guid: 838056251622f9948baa13b5b2201f53, type: 3}

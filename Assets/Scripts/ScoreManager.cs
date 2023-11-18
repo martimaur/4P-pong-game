@@ -83,7 +83,7 @@ public class ScoreManager : MonoBehaviour
     {
         MainLayout.gameObject.SetActive(true);
         var newSprite = activeScoreSprite;
-        newSprite.GetComponent<UnityEngine.UI.Image>().material = pcm.GetPlayerMaterial(playerId);
+        newSprite.GetComponent<UnityEngine.UI.Image>().material = pcm.GetUiMaterial(playerId);
 
         var parent = MainLayout.transform.GetChild(0).transform.GetChild(playerId+1).transform.GetChild(playerScores[playerId]-1).gameObject;
         createInst(newSprite, parent);
