@@ -20,16 +20,9 @@ public class ButtonEnabled : MonoBehaviour
     }
 
 
-
+    // need fix buttons ;
     void CheckButton(string name, bool buttonCheck)
     {
-        currentSelected = EventSystem.current.currentSelectedGameObject;
-        Button buttonHighlighted = currentSelected.GetComponent<Button>();
-        if (buttonHighlighted.name == name)
-        {
-            return;
-        }
-
         if (!buttonCheck && thisButton.name == name && thisButton.interactable == true)
         {
             thisButton.interactable = false;
@@ -44,21 +37,21 @@ public class ButtonEnabled : MonoBehaviour
         CheckButton("yellow", stateMan.yellowEnabled);
     }
 
-    public void disableButttonStatus(Button button)
+    public void disableButttonStatus(string name)
     {
-        if (button.name == "red")
+        if (name == "red")
         {
             stateMan.redEnabled = false;
         }
-        else if (button.name == "blue")
+        else if (name == "blue")
         {
             stateMan.blueEnabled = false;
         }
-        else if (button.name == "green")
+        else if (name == "green")
         {
             stateMan.greenEnabled = false;
         }
-        else if (button.name == "yellow")
+        else if (name == "yellow")
         {
             stateMan.yellowEnabled = false;
         }
