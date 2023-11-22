@@ -11,7 +11,7 @@ public class PlayerConfigManager : MonoBehaviour
     public int connectedPlayers;
     public GameObject controlsIcons;
     public int maxPlayers = 4;
-
+    public TransitionManager transitionMan;
     public static PlayerConfigManager instance {  get; private set; }
 
     private void Awake()
@@ -31,6 +31,11 @@ public class PlayerConfigManager : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+        // get transitionManager
+        transitionMan = GameObject.Find("TransitionManager").GetComponent<TransitionManager>();
+    }
     public List<PlayerConfiguration> GetPlayerConfigs()
     {
         return playerConfigs;
@@ -51,7 +56,7 @@ public class PlayerConfigManager : MonoBehaviour
         playerConfigs[playerInd].isReady = true;
         if (playerConfigs.Count > 1 &&  playerConfigs.Count <= maxPlayers && playerConfigs.All(p => p.isReady == true))
         {
-            SceneManager.LoadScene("MainScene");
+            transitionMan.ChangeScene("MainScene");
             connectedPlayers = playerConfigs.Count;
         } 
     }

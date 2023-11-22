@@ -7,25 +7,27 @@ public class GameOverManager : MonoBehaviour
 {
     public delegate void GameRestart();
     public static GameRestart gameRestart;
-    public static GameRestart pcmRestart; 
+    public static GameRestart pcmRestart;
+    public TransitionManager transitionMan;
 
     // Start is called before the first frame update
     public void RestartGame()
     {
+        transitionMan = GameObject.Find("TransitionManager").GetComponent<TransitionManager>();
+        transitionMan.ChangeScene("MainScene");
         gameRestart();
-        SceneManager.LoadScene("MainScene");
     }
 
     public void ResetGame()
     {
-        gameRestart();
+        transitionMan = GameObject.Find("TransitionManager").GetComponent<TransitionManager>();
+        transitionMan.ChangeScene("PlayerSetup");
         pcmRestart();
-        SceneManager.LoadScene("PlayerSetup");
+        gameRestart();
     }
 
     private void clearMemory()
     {
 
     }
-
 }

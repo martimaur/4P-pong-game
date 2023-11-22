@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using System.Transactions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
     private float ballSpawnDelay = 1f;
 
     public static int roundWinnerId;
+    public TransitionManager transitionMan;
 
     
 
@@ -57,7 +59,6 @@ public class GameManager : MonoBehaviour
         }
         // get scoreManager
         scoreMan = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
-
 
         int playerNum = pcm.connectedPlayers;
         //player object list;
@@ -86,6 +87,9 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        // get transitionManager
+        transitionMan = GameObject.Find("TransitionManager").GetComponent<TransitionManager>();
+
         //spawn barriers
         barrierList = new List<GameObject> {BarrierP1 , BarrierP2 , BarrierP3 , BarrierP4};
         
@@ -145,7 +149,7 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int playerId)
     {
         ScoreManager.playerScores[playerId]++;
-        SceneManager.LoadScene("ScoreScene");
+        transitionMan.ChangeScene("ScoreScene"); //change scene
     }
 
     public void ResetGameRound()

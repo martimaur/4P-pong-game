@@ -38,6 +38,8 @@ public class ScoreManager : MonoBehaviour
     private GameObject duplicate;
     private bool firstRun = true;
 
+    public TransitionManager transitionMan;
+
     private void Awake()
     {
         //subscribe to event
@@ -49,6 +51,8 @@ public class ScoreManager : MonoBehaviour
         {
             playerScores = new List<int> { 0, 0, 0, 0 }; // initializes the list at only 0's
         }
+
+        transitionMan = GameObject.Find("TransitionManager").GetComponent<TransitionManager>();
     }
 
     private void ChangedActiveScene(UnityEngine.SceneManagement.Scene prev, UnityEngine.SceneManagement.Scene active)
@@ -134,8 +138,14 @@ public class ScoreManager : MonoBehaviour
     IEnumerator DelaySceneChange(string sceneName)
     {
         yield return new WaitForSeconds(changeSceneTime); // Wait for delay
+        transitionMan.ChangeScene(sceneName);
+        StartCoroutine(DelayLayoutActiveFalse(transitionMan.durationTransition));
+    }
+
+    IEnumerator DelayLayoutActiveFalse(float duration)
+    {
+        yield return new WaitForSeconds(duration);
         MainLayout.SetActive(false);
-        SceneManager.LoadScene(sceneName);
     }
 
     private void PrintListElements<T>(List<T> listToPrint)

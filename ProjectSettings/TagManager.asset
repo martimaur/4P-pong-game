@@ -9,6 +9,7 @@ TagManager:
   - ScoreManager
   - ScoreLayout
   - Ball
+  - TransitionManager
   layers:
   - Default
   - TransparentFX

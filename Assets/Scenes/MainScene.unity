@@ -472,6 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 7038280211883150948, guid: 1b9b22d6f3dbe1f40b336a8da99853b4, type: 3}
+  transitionMan: {fileID: 0}
 --- !u!1001 &244576438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3915,15 +3916,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6552171120409052567, guid: c9e8a274456f8d545ae5a6d340948e48, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6552171120409052567, guid: c9e8a274456f8d545ae5a6d340948e48, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6552171120409052567, guid: c9e8a274456f8d545ae5a6d340948e48, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6552171120409052567, guid: c9e8a274456f8d545ae5a6d340948e48, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3940,6 +3941,10 @@ PrefabInstance:
     - target: {fileID: 7620086253190000301, guid: c9e8a274456f8d545ae5a6d340948e48, type: 3}
       propertyPath: maxScore
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7620086253190000301, guid: c9e8a274456f8d545ae5a6d340948e48, type: 3}
+      propertyPath: changeSceneTime
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7620086253190000301, guid: c9e8a274456f8d545ae5a6d340948e48, type: 3}
       propertyPath: activeScoreSprite

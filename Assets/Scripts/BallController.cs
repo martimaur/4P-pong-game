@@ -36,7 +36,10 @@ public class BallController : MonoBehaviour
 
     private void LaunchBall()
     {
-
+        if (powerUpEffect == "SpikeBall")
+        {
+            return; //we dont want to add launch ball force
+        }
         //FIXME CHANCE TO SPAWN INFINITE LOOP HITTING SIDES
 
         List<Vector3> randomPosList = new List<Vector3>();
