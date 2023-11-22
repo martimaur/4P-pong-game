@@ -12,11 +12,12 @@ public class PlayerConfigManager : MonoBehaviour
     public GameObject controlsIcons;
     public int maxPlayers = 4;
     public TransitionManager transitionMan;
+    public PlayerInputManager playerManager;
     public static PlayerConfigManager instance {  get; private set; }
 
     private void Awake()
     {
-
+        playerManager = GetComponent<PlayerInputManager>();
         GameOverManager.pcmRestart += DestroyConfigManager;
         controlsIcons = GameObject.Find("ControlsIcons");
         if (instance != null)
@@ -56,6 +57,7 @@ public class PlayerConfigManager : MonoBehaviour
         playerConfigs[playerInd].isReady = true;
         if (playerConfigs.Count > 1 &&  playerConfigs.Count <= maxPlayers && playerConfigs.All(p => p.isReady == true))
         {
+            playerManager.DisableJoining();
             transitionMan.ChangeScene("MainScene");
             connectedPlayers = playerConfigs.Count;
         } 
@@ -66,7 +68,7 @@ public class PlayerConfigManager : MonoBehaviour
         Debug.Log("Player " + (player.playerIndex+1).ToString() + " joined!");
         controlsIcons.SetActive(false); //remove controls icons instructions
         if (!playerConfigs.Any(p => p.playerIndex == player.playerIndex))
-        { 
+        {
             player.transform.SetParent(transform);
             playerConfigs.Add(new PlayerConfiguration(player));
         }

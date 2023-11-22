@@ -118,13 +118,12 @@ public class GameManager : MonoBehaviour
     public void CheckPlayerCount()
     {
         int count = playerList.Count(player => player.isAlive == true);
-        Debug.Log(count);
         if (count < 2) 
         {
             int winnerId = playerList.Find(player => player.isAlive == true).playerIndex;
-            ResetGameRound();
             UpdateScore(winnerId);
             roundWinnerId = winnerId;
+            ResetGameRound();
         }
     }
 
@@ -154,6 +153,13 @@ public class GameManager : MonoBehaviour
 
     public void ResetGameRound()
     {
+        StartCoroutine(ResetGameRound(0.75f));
+    }
+
+    public IEnumerator ResetGameRound(float duration)
+    {
+        yield return new WaitForSeconds(duration); // Wait for delay
+
         foreach (var player in playerList)
         {
             if (player.isSpawned)
