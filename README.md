@@ -5,7 +5,7 @@ Welcome to the 4-Player Pong Game, an exciting multiplayer twist on the classic 
 
 ## Gameplay
 
-- In this game, up to four players can compete simultaneously. Each player controls a paddle, the objective is to bounce the ball past your opponents' paddles into their goal. You can collect power ups to get bigger faster and control the ball in unexpected wayas. 
+- In this game, up to four players can compete simultaneously. Each player controls a paddle, the objective is to bounce the ball past your opponents' paddles into their goal. You can collect power ups to get bigger faster and control the ball in unexpected ways. 
 - The last player standing wins the round (First to 4 points wins)
 
 ## Features
