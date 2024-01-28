@@ -30,12 +30,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject ballPrefab;
 
-    private float ballSpawnDelay = 1f;
+    private float ballSpawnDelay = 0.5f;
 
     public static int roundWinnerId;
     public TransitionManager transitionMan;
 
-    
+    //Audio
+    private AudioManager audioManager;
+
 
     private void Awake()
     {
@@ -67,6 +69,9 @@ public class GameManager : MonoBehaviour
         spawnList = new List<GameObject> { spawnP1, spawnP2, spawnP3, spawnP4 };
         //spawn barriers list;
         barrierList = new List<GameObject> { BarrierP1, BarrierP2, BarrierP3, BarrierP4 };
+
+        //Audio
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
 
         for (int i = 0; i < 4; i++) // 4 sides
         {
@@ -148,6 +153,8 @@ public class GameManager : MonoBehaviour
     public void UpdateScore(int playerId)
     {
         ScoreManager.playerScores[playerId]++;
+        //lowpass fadeout
+        audioManager.FadeLowPassIn();
         transitionMan.ChangeScene("ScoreScene"); //change scene
     }
 

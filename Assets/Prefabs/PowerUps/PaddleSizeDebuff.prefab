@@ -121,5 +121,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   applyPaddle: 1
   applyBall: 0
-  powerupEffect: {fileID: 11400000, guid: cb09d981675e07d4fa5dc0488212b345, type: 2}
+  powerupEffect: {fileID: 4208268520057755475, guid: 0b5854acc79dd8d4a8b63abc991493fe, type: 3}
   animationEffect: {fileID: 8680934361064054421, guid: 838056251622f9948baa13b5b2201f53, type: 3}

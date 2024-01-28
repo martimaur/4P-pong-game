@@ -12,12 +12,22 @@ public class BallController : MonoBehaviour
     private GameManager gm;
     public GameObject lastPlayerTouch;
     public string powerUpEffect = null;
+    private AudioManager audioManager;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        // wait delay
+        StartCoroutine(LaunchBallWithDelay());
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+    }
+
+    public IEnumerator LaunchBallWithDelay()
+    {
+        yield return new WaitForSeconds(0.5f); // Wait for delay 
         LaunchBall();
     }
 
@@ -69,16 +79,11 @@ public class BallController : MonoBehaviour
             newSpawnPoint = new Vector3(Random.Range(-(y - 4), y - 4), y, 0);
         }
         return newSpawnPoint;
-    }
+    }   
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Barrier")
-        {
-            CameraShaker.Instance.ShakeOnce(0.8f, 1, 0.1f, 0.6f);
-        }
-
-        if (collision.transform.tag == "Border")
+        if (collision.transform.tag == "Border") // out of bounds border
         {
             //check if powerup enabled
             if (powerUpEffect == "SpikeBall")
@@ -90,13 +95,21 @@ public class BallController : MonoBehaviour
             }
 
             //else we elim the player
-
+            audioManager.PlaySFX(audioManager.explosion);
             string name = collision.transform.name;
-            int playerId = int.Parse(name[name.Length - 1].ToString()) - 1;
+            int playerId = int.Parse(name[name.Length - 1].ToString()) - 1; // get dead player id
             if (!gm.GetPlayerFromId(playerId).isAlive) { return; } //if player dead we dont wanna colide
 
             Destroy(this.gameObject); // destroy ball
             gm.BorderCollision(playerId);
+            return;
+        }
+
+        if (collision.transform.tag == "Barrier")
+        {
+            CameraShaker.Instance.ShakeOnce(0.8f, 1, 0.1f, 0.6f);
+            audioManager.PlaySFX(audioManager.bounce);
+            return;
         }
         
         if (collision.transform.tag == "Player")
@@ -104,6 +117,8 @@ public class BallController : MonoBehaviour
             //fx
             var speed = collision.gameObject.GetComponent<Rigidbody>().velocity.magnitude;
             CameraShaker.Instance.ShakeOnce(0.8f, speed, 0.1f, 0.6f);
+
+            audioManager.PlaySFX(audioManager.bouncePaddle);
 
             //check if powerup enabled
             if (powerUpEffect == "SpikeBall")

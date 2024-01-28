@@ -32,9 +32,8 @@ public class PowerUpManager : MonoBehaviour      //manages and spawns power ups
 
     public void RemovePowerUp(GameObject powerUpToRemove)
     {
-        Debug.Log("RemovePowerUp: "+currentPowerUps.Contains(powerUpToRemove));
         currentPowerUps.Remove(powerUpToRemove);
-    }
+    } 
 
     private int GetRandomWeightedIndex(int[] weights)
     {
@@ -73,8 +72,6 @@ public class PowerUpManager : MonoBehaviour      //manages and spawns power ups
             //get random powerup
             var prefabToSpawn = powerUps[GetRandomWeightedIndex(powerUpWeights)];
 
-
-            Debug.Log("instantiated");
             var spawnedPrefab = Instantiate(prefabToSpawn, spawnPos, prefabToSpawn.transform.rotation, gameObject.transform);
             currentPowerUps.Add(spawnedPrefab);
         }

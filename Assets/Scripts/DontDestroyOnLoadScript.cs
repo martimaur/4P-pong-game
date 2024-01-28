@@ -7,11 +7,16 @@ public class DontDestroyOnLoadScript : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] string tagElement;
+    [SerializeField] bool immortalScript; // does it not die when game restarts
 
     private void Awake()
     {
         if (this == null) { return; }
-        GameOverManager.gameRestart += DestroyLoadObj; //add function to gameDeath
+
+        if (!immortalScript)
+        {
+            GameOverManager.gameRestart += DestroyLoadObj; //add function to gameDeath
+        }
 
         var elements = GameObject.FindGameObjectsWithTag(tagElement);
         if (elements.Length > 1)

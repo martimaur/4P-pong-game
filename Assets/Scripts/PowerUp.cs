@@ -36,5 +36,26 @@ public class PowerUp : MonoBehaviour
             powerupManager.RemovePowerUp(gameObject);
             //remove powerup icon
         }
+
+        else if (other.transform.tag == "SpikeBall")
+        {
+            var obj = Instantiate(animationEffect, this.transform.position, animationEffect.transform.rotation); //spawn fx
+            if (applyBall)
+            {
+                var renderers = other.GetComponentsInChildren<MeshRenderer>();
+                foreach (MeshRenderer render in renderers)
+                {
+                    powerupEffect.Apply(render.gameObject);
+                }
+            }
+            if (applyPaddle)
+            {
+                var lastPlayer = other.GetComponent<BallController>().lastPlayerTouch;
+                if (lastPlayer != null) powerupEffect.Apply(lastPlayer.gameObject);
+            }
+            Destroy(gameObject);
+            powerupManager.RemovePowerUp(gameObject);
+            //remove powerup icon
+        }
     }
 }

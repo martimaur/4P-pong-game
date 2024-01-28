@@ -39,12 +39,15 @@ public class ScoreManager : MonoBehaviour
     private bool firstRun = true;
 
     public TransitionManager transitionMan;
+    
+    private AudioManager audioManager;
 
     private void Awake()
     {
         //subscribe to event
         SceneManager.activeSceneChanged += ChangedActiveScene;
         pcm = GameObject.Find("PlayerConfigManager").GetComponent<PlayerConfigManager>();
+        audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         playerCount = pcm.connectedPlayers;
 
         if (playerScores == null)
@@ -138,6 +141,7 @@ public class ScoreManager : MonoBehaviour
     IEnumerator DelaySceneChange(string sceneName)
     {
         yield return new WaitForSeconds(changeSceneTime); // Wait for delay
+
         transitionMan.ChangeScene(sceneName);
         StartCoroutine(DelayLayoutActiveFalse(transitionMan.durationTransition));
     }
@@ -145,6 +149,8 @@ public class ScoreManager : MonoBehaviour
     IEnumerator DelayLayoutActiveFalse(float duration)
     {
         yield return new WaitForSeconds(duration);
+        //lowpass fadeout
+        audioManager.FadeLowPassOut();
         MainLayout.SetActive(false);
     }
 
